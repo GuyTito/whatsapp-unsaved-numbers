@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Unsaved Number</title>
+</head>
+
+<style>
+  :root {
+    --wasap-green: hsl(173.11, 77.22%, 30.98%);
+  }
+
+  .phone-input {
+    display: flex;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #phone {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 12px 0px;
+    border: 1px #ccc solid;
+
+    &:focus {
+      outline: 1px var(--wasap-green) solid;
+      border: 1px var(--wasap-green) solid;
+    }
+
+    &:hover {
+      border: 1px var(--wasap-green) solid;
+    }
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  label {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--wasap-green);
+    color: white;
+    outline: none;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: hsl(173.11, 77.22%, 28.63%);
+    }
+
+    &:active {
+      background-color: hsl(173.11, 77.22%, 26.63%);
+    }
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  h1 {
+    color: var(--wasap-green);
+    text-align: center;
+  }
+
+  .tagline {
+    text-align: center;
+    font-size: 12px;
+    color: grey;
+    margin-top: 40px;
+    font-style: italic;
+    line-height: 4px;
+  }
+</style>
+
+<body>
+
+  <div class="app">
+    <h1>WhatsApp Unsaved Number</h1>
+    <form onsubmit="sendMessage(event)">
+      <label for="phone">Phone number</label>
+      <div>
+        <!-- <input type="text" value="+233" disabled> -->
+        <input name="phone" id="phone" type="number" placeholder="0244000000" autocomplete="off">
+      </div>
+      <button>WhatsApp</button>
+    </form>
+    <div class="tagline">
+      <p>Send WhatsApp messages without saving numbers.</p>
+      <p>Easy, fast, and convenient!</p>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      const phoneNumber = document.getElementById('phone').value.trim();
+      if (phoneNumber) {
+        const url = `https://wa.me/+233${phoneNumber}`;
+        window.open(url, '_blank').focus();
+      } else {
+        alert('Please enter a phone number');
+      }
+    }
+  </script>
+</body>
+
+</html>
